@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why I Built This — KeraViveLabs</title>
+<meta name="description" content="I was the patient nobody warned. Rachel Morgan on the supplement routine she couldn't keep, the things nobody named, and why she built KeraViveLabs.">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why I Built This — KeraViveLabs">
+<meta property="og:description" content="I was the patient nobody warned.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Archivo+Black&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0A0C0E;
+    --paper:#FFFFFF;
+    --cream:#F4F1E8;
+    --muted:#6E747C;
+    --line:#E2DED2;
+    --pad:clamp(20px,5vw,40px);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.62;-webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;height:auto;}
+  a{color:inherit;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+  .col{max-width:680px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+
+  h1,h2,h3{font-family:"Archivo Black","Archivo",sans-serif;font-weight:400;letter-spacing:-.02em;line-height:1.05;margin:0 0 .4em;text-transform:uppercase;}
+  h1{font-size:clamp(38px,7vw,74px);}
+  h2{font-size:clamp(24px,3.4vw,34px);margin-top:1.6em;}
+  h3{font-size:16px;letter-spacing:.02em;}
+
+  .announce{background:var(--ink);color:#fff;text-align:center;font-size:12.5px;letter-spacing:.06em;padding:11px var(--pad);text-transform:uppercase;font-weight:600;}
+
+  header.nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);z-index:50;}
+  .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:18px;padding-bottom:18px;}
+  .logo{font-family:"Archivo Black";font-size:19px;text-decoration:none;text-transform:uppercase;}
+  .btn{
+    display:inline-block;background:var(--ink);color:#fff;text-decoration:none;
+    padding:19px 40px;border-radius:8px;font-weight:700;font-size:15px;
+    letter-spacing:.07em;text-transform:uppercase;transition:opacity .15s ease;border:2px solid var(--ink);
+  }
+  .btn:hover{opacity:.86;}
+  .btn--sm{padding:13px 24px;font-size:13px;}
+  .btn--ghost{background:transparent;color:var(--ink);}
+
+  /* HERO — magazine feature opening */
+  .hero{background:var(--cream);padding:clamp(48px,7vw,92px) 0 clamp(44px,6vw,76px);}
+  .hero__grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center;
+  }
+  @media(max-width:880px){.hero__grid{grid-template-columns:1fr;gap:32px;}}
+  .kicker{
+    display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--ink);
+    padding-bottom:7px;margin-bottom:26px;
+  }
+  .hero h1{max-width:13ch;margin-bottom:26px;}
+  .dek{
+    font-size:clamp(18px,2.3vw,22px);line-height:1.5;color:#3C4148;max-width:44ch;
+    border-left:3px solid var(--ink);padding-left:20px;margin:0 0 32px;
+  }
+  .byline{display:flex;align-items:center;gap:15px;padding-top:24px;border-top:1px solid var(--line);}
+  .byline__img{width:54px;height:54px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:#DED9CB;}
+  .byline__txt{font-size:14.5px;}
+  .byline__txt b{display:block;font-weight:700;}
+  .byline__txt span{color:var(--muted);font-size:13.5px;}
+
+  /* ===== BEFORE / AFTER PORTRAIT ===== */
+  .portrait{
+    border-radius:16px;overflow:hidden;background:#DED9CB;aspect-ratio:4/5;
+    display:grid;grid-template-columns:1fr 1fr;position:relative;
+  }
+  .portrait__half{position:relative;overflow:hidden;}
+  .portrait__half img{width:100%;height:100%;object-fit:cover;}
+  .portrait__half--before img{object-position:center 18%;}
+  .portrait__half--after img{object-position:center top;}
+  .portrait__label{
+    position:absolute;top:14px;background:#000;color:#fff;
+    font-family:"Archivo Black","Archivo",sans-serif;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    padding:6px 12px;line-height:1;z-index:3;
+  }
+  .portrait__label--before{left:14px;}
+  .portrait__label--after{right:14px;}
+  .portrait__divider{
+    position:absolute;top:0;bottom:0;left:50%;width:2px;
+    background:rgba(255,255,255,.85);transform:translateX(-50%);z-index:2;
+  }
+
+  /* SHORT VERSION BAND */
+  .tldr{background:var(--ink);color:#fff;padding:clamp(30px,4vw,46px) 0;}
+  .tldr__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);}
+  @media(max-width:820px){.tldr__grid{grid-template-columns:1fr;gap:22px;}}
+  .tldr__item{border-top:2px solid #fff;padding-top:16px;}
+  .tldr__item b{
+    display:block;font-family:"Archivo Black";text-transform:uppercase;
+    font-size:14px;letter-spacing:.02em;margin-bottom:8px;
+  }
+  .tldr__item span{font-size:15px;color:#C9CED4;line-height:1.5;}
+
+  /* ARTICLE */
+  article{padding:clamp(48px,7vw,86px) 0 clamp(40px,6vw,70px);}
+  article p{font-size:clamp(17px,2vw,19px);margin:0 0 1.35em;}
+  article p.first::first-letter{
+    font-family:"Archivo Black";float:left;font-size:4.1em;line-height:.82;
+    padding:6px 12px 0 0;
+  }
+  .lead{font-size:clamp(19px,2.4vw,23px);font-weight:500;line-height:1.45;}
+
+  blockquote{
+    margin:2.4em 0;padding:0 0 0 24px;border-left:4px solid var(--ink);
+    font-family:"Archivo Black";text-transform:uppercase;font-size:clamp(20px,2.8vw,28px);
+    line-height:1.14;letter-spacing:-.015em;
+  }
+  blockquote p{font-size:inherit;margin:0;}
+
+  .rule{border:0;border-top:1px solid var(--line);margin:3em 0;}
+
+  /* NAMED CONDITIONS INSET */
+  .inset{
+    background:var(--cream);border-radius:16px;padding:clamp(24px,3.4vw,38px);margin:2.8em 0;
+  }
+  .inset h3{margin-bottom:18px;font-family:"Archivo Black";font-size:13px;letter-spacing:.14em;color:var(--muted);}
+  .inset dl{margin:0;display:grid;gap:18px;}
+  .inset dt{font-family:"Archivo Black";text-transform:uppercase;font-size:17px;letter-spacing:-.01em;}
+  .inset dd{margin:5px 0 0;font-size:15.5px;color:#3C4148;line-height:1.55;}
+
+  /* SIGNATURE */
+  .sig{margin-top:2.6em;padding-top:26px;border-top:1px solid var(--line);}
+  .sig b{font-family:"Archivo Black";text-transform:uppercase;font-size:17px;display:block;}
+  .sig span{font-size:14px;color:var(--muted);}
+
+  /* CTA */
+  .cta{background:var(--ink);color:#fff;text-align:center;padding:clamp(56px,8vw,96px) 0;}
+  .cta h2{color:#fff;margin-top:0;font-size:clamp(26px,4vw,42px);}
+  .cta p{font-size:clamp(17px,2vw,19px);color:#C9CED4;max-width:56ch;margin:0 auto 32px;}
+  .cta .btn{background:#fff;color:var(--ink);border-color:#fff;}
+  .cta .note{font-size:13.5px;color:#6E747C;margin:20px auto 0;}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#9AA0A8;padding:0 0 44px;font-size:13.5px;}
+  footer a{color:#fff;}
+  .disclaimer{border-top:1px solid #23282D;padding-top:24px;line-height:1.6;font-size:12px;color:#6E747C;}
+  .disclaimer p{margin:0 0 10px;}
+</style>
+</head>
+<body>
+
+<div class="announce">Made for post-op routines · Free US shipping · 30-day money-back guarantee</div>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="/">KeraViveLabs</a>
+    <a class="btn btn--sm" href="https://www.keravivelabs.com/products/keravivelabs-nourish-digest-bundle">Shop the bundle</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap hero__grid">
+
+    <div>
+      <span class="kicker">Why I built this</span>
+      <h1>I was the patient nobody warned.</h1>
+      <p class="dek">I'm not a nutritionist or a chemist. I'm the person who had the surgery — and who couldn't keep up with the routine she was handed.</p>
+
+      <div class="byline">
+        <!-- Replace src with a real headshot. Hides itself if the file is missing. -->
+        <img class="byline__img" src="" alt="" onerror="this.style.display='none'">
+        <div class="byline__txt">
+          <b>Rachel Morgan</b>
+          <span>Founder, KeraViveLabs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BEFORE / AFTER PORTRAIT ===== -->
+    <div class="portrait">
+      <div class="portrait__half portrait__half--before">
+        <span class="portrait__label portrait__label--before">Before</span>
+        <!-- Replace src with your before photo -->
+        <img src="before.jpg" alt="Rachel Morgan before bariatric surgery">
+      </div>
+      <div class="portrait__divider"></div>
+      <div class="portrait__half portrait__half--after">
+        <span class="portrait__label portrait__label--after">After</span>
+        <!-- Replace src with your after photo -->
+        <img src="after.jpg" alt="Rachel Morgan after bariatric surgery">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ THE SHORT VERSION ============ -->
+<div class="tldr">
+  <div class="wrap tldr__grid">
+    <div class="tldr__item">
+      <b>The problem</b>
+      <span>Four bottles, four times a day, and water I wasn't supposed to drink around meals. I started skipping. Then I stopped.</span>
+    </div>
+    <div class="tldr__item">
+      <b>What nobody named</b>
+      <span>Hair shedding at month three. Nails splitting. Skin like sandpaper. All of it has a name — I just didn't have them yet.</span>
+    </div>
+    <div class="tldr__item">
+      <b>What I built</b>
+      <span>Not another bottle. Two gummies and a strip that melts. No water, nothing to swallow, ten seconds.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ARTICLE ============ -->
+<article>
+  <div class="col">
+
+    <p class="first">I remember sitting on the edge of my bed about eight weeks post-op, staring at a counter full of supplement bottles my team had prescribed. Calcium citrate. B-12. Iron. A bariatric multivitamin the size of my thumbnail. Every single one needed water I couldn't drink around meals. Every single one made me feel like I was negotiating with a stomach that had already quit the conversation.</p>
+
+    <blockquote><p>And the pills were the worst part. Not the food. Not the tracking. The pills.</p></blockquote>
+
+    <p>They sat. They got stuck. I'd take them too close to a meal and regret it. I'd take them too far from a meal and forget. I started skipping days. Then weeks. Then I looked at the half-empty bottles and felt like I was already failing at something I was supposed to do for the rest of my life.</p>
+
+    <p>Nobody told me it would feel like that. The surgeon explained the procedure. The dietitian handed me the protocol. But nobody sat with me at 7 AM and admitted that the routine itself — the four bottles, the four times a day, the water timing, the sheer friction of it — was going to be the hardest part.</p>
+
+    <hr class="rule">
+
+    <h2>And nobody warned me about the rest.</h2>
+
+    <p>About month three, my hair started coming out in handfuls. Not a few strands in the shower — actual clumps. I'd run my fingers through my hair and come away with a nest of it. I stood in front of the mirror one morning and saw my scalp through the thinning at my part, and I cried.</p>
+
+    <p>Nobody told me that rapid weight loss pushes your hair follicles into a resting phase all at once, so they shed together months later. Nobody told me it had a name, or that it would eventually stop.</p>
+
+    <blockquote><p>I just thought I was falling apart.</p></blockquote>
+
+    <p>My nails went next. They'd split down the middle, peel in layers, catch on everything. I'd look down at my hands during a meeting and see ten tiny reminders that my body was in upheaval.</p>
+
+    <p>And my skin. It felt tight and dry no matter how much lotion I used. Flaky patches on my cheeks, my arms, my legs. I'd scratch and leave white marks. The water restrictions around meals meant I was dehydrated more often than I realized, and my skin was the first place to show it.</p>
+
+    <div class="inset">
+      <h3>Three things nobody named for me</h3>
+      <dl>
+        <div>
+          <dt>Telogen effluvium</dt>
+          <dd>The hair. Rapid weight loss pushes a large share of follicles into their resting phase at once, so they shed together a few months later. It starts around month three — and it usually passes.</dd>
+        </div>
+        <div>
+          <dt>Onychoschizia</dt>
+          <dd>The nails. A fancy word for nails that can't hold themselves together — splitting down the middle, peeling in layers.</dd>
+        </div>
+        <div>
+          <dt>Xerosis</dt>
+          <dd>The skin. Dry, tight, flaky. The dermatologist gave me the word months after I'd started scratching white marks into my arms.</dd>
+        </div>
+      </dl>
+    </div>
+
+    <p>So there I was — hair shedding, nails splitting, skin flaking, pills sitting in my stomach like gravel — and the only advice I got was <em>stick with it</em>.</p>
+
+    <blockquote><p>I couldn't stick with it. Not like that.</p></blockquote>
+
+    <hr class="rule">
+
+    <h2>So I built the thing I needed.</h2>
+
+    <p>Not another supplement on the list. The part of the list that's actually easy. Two soft gummies I can chew. A strip that melts on my tongue in seconds. No water. Nothing to swallow. Ten seconds, start to finish.</p>
+
+    <p>I worked with formulators to get the nutrients right for the things nobody warned me about. Biotin at 6,000 mcg. Marine collagen. Silicon. Zinc. Vitamin E — the nutrients that support hair, skin and nail health through the stretch when your body is rebuilding itself from the inside out. A full B-complex for the energy crash that hits at 3 PM. A spore-forming probiotic that actually survives stomach acid. Three plant enzymes for the protein my stomach finds so hard to break down.</p>
+
+    <p>Then I made it taste good, because I was done choking down chalk.</p>
+
+    <hr class="rule">
+
+    <h2>I'm not going to promise you a miracle.</h2>
+
+    <p>What I'll promise is this: it's the one piece of my routine I've never skipped. And when I hear from other patients — people who had the sleeve, the bypass, the revision — saying it's the only supplement they've ever actually kept up with, I know I'm not the only one who needed it.</p>
+
+    <p>If you're where I was — staring at bottles, shedding hair, splitting nails, wondering why this part has to be so hard — this is for you.</p>
+
+    <blockquote><p>Not instead of your program. Alongside it. The easy part of a hard routine.</p></blockquote>
+
+    <div class="sig">
+      <b>Rachel Morgan</b>
+      <span>Founder, KeraViveLabs</span>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CTA ============ -->
+<div class="cta">
+  <div class="wrap">
+    <h2>The easy part of a hard routine</h2>
+    <p>Two soft gummies and a strip that melts on your tongue. 15 vitamins and minerals, 10 billion CFU and three plant enzymes — no water, nothing to swallow, ten seconds a day.</p>
+    <a class="btn" href="https://www.keravivelabs.com/products/keravivelabs-nourish-digest-bundle">Try it risk-free</a>
+    <p class="note">30-day money-back guarantee · Not a bariatric multivitamin — take it alongside the regimen your surgical team prescribed.</p>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap" style="padding-top:44px;">
+    <div class="disclaimer">
+      <p><strong style="color:#C9CED4;">Not a bariatric multivitamin.</strong> This product is not formulated to ASMBS post-operative specifications and does not contain iron, calcium or thiamin. Continue the supplement regimen prescribed by your surgical team, and talk to your doctor or pharmacist before starting anything new — particularly if you take blood thinners or are due for lab work, as high-dose biotin can interfere with some laboratory tests.</p>
+      <p>Contains fish (tilapia) and tree nuts (coconut). Gummies contain 4 g added sugar per serving.</p>
+      <p>One person's experience. Individual results vary, and nothing here is medical advice.</p>
+      <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+      <p style="margin:0;">© 2026 KeraViveLabs. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
